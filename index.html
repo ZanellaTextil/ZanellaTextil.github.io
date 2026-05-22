@@ -367,7 +367,7 @@
       background: var(--surface);
       border-left: 2px solid var(--gold);
     }
-    .cap-feat-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+    .cap-feat-icon { flex-shrink: 0; margin-top: 3px; display: flex; align-items: flex-start; }
     .cap-feat h4 { font-size: 15px; color: var(--white); margin-bottom: 4px; font-weight: 500; }
     .cap-feat p { font-size: 13px; color: var(--text-muted); margin: 0; }
 
@@ -764,28 +764,55 @@
 
     <div class="cap-features reveal">
       <div class="cap-feat">
-        <div class="cap-feat-icon">⚙️</div>
+        <div class="cap-feat-icon">
+          <!-- Settings / gear -->
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c49a4f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+        </div>
         <div>
           <h4>Maquinário industrial</h4>
           <p>Parque de máquinas mantido e atualizado para garantir eficiência e qualidade constantes.</p>
         </div>
       </div>
       <div class="cap-feat">
-        <div class="cap-feat-icon">📋</div>
+        <div class="cap-feat-icon">
+          <!-- Clipboard / checklist -->
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c49a4f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+            <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
+            <line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/>
+          </svg>
+        </div>
         <div>
           <h4>Controle de processo</h4>
           <p>Fluxo de produção documentado, com pontos de controle em cada fase — do corte à embalagem.</p>
         </div>
       </div>
       <div class="cap-feat">
-        <div class="cap-feat-icon">🚚</div>
+        <div class="cap-feat-icon">
+          <!-- Truck -->
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c49a4f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="1" y="3" width="15" height="13" rx="1"/>
+            <path d="M16 8h4l3 5v3h-7V8z"/>
+            <circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+          </svg>
+        </div>
         <div>
           <h4>Atendimento nacional</h4>
           <p>Produzimos em Santa Catarina e enviamos para marcas em todo o Brasil, com logística organizada.</p>
         </div>
       </div>
       <div class="cap-feat">
-        <div class="cap-feat-icon">🤝</div>
+        <div class="cap-feat-icon">
+          <!-- Handshake / users -->
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c49a4f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
         <div>
           <h4>Comunicação direta</h4>
           <p>Acompanhamento do pedido, prazos claros e canal aberto — sem intermediários, sem surpresas.</p>
