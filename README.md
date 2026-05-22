@@ -1,1 +1,2 @@
-# ZanellaTextil.github.io
+# Zanella Têxtil
+Site institucional da Zanella Têxtil — produção têxtil industrial desde 2002.
