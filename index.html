@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zanella Têxtil | Produção Industrial desde 2002</title>
+  <meta name="description" content="Confecção industrial com mais de 20 anos de experiência. Costura, revisão e embalagem para marcas de todo o Brasil. Santa Catarina.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:        #0e0e0e;
+      --bg-2:      #141414;
+      --bg-3:      #1a1a1a;
+      --surface:   #1e1e1e;
+      --border:    #2a2a2a;
+      --gold:      #c49a4f;
+      --gold-lt:   #dbb96e;
+      --text:      #e8e4de;
+      --text-muted:#8a8278;
+      --white:     #f5f2ed;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── UTILITY ── */
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+    .gold { color: var(--gold); }
+    .serif { font-family: 'Playfair Display', serif; }
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 14px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 22px 0;
+      transition: background .4s, padding .4s;
+    }
+    nav.scrolled {
+      background: rgba(10,10,10,.94);
+      backdrop-filter: blur(12px);
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    nav .inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.5px;
+    }
+    .logo span { color: var(--gold); }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 36px;
+    }
+    nav ul a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: color .25s;
+    }
+    nav ul a:hover { color: var(--gold); }
+    .nav-cta {
+      background: var(--gold);
+      color: #000 !important;
+      padding: 10px 22px;
+      border-radius: 3px;
+      font-weight: 500 !important;
+      letter-spacing: 0.5px !important;
+      text-transform: none !important;
+      font-size: 14px !important;
+      transition: background .25s !important;
+    }
+    .nav-cta:hover { background: var(--gold-lt) !important; color: #000 !important; }
+
+    /* hamburger */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: .3s; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 80px;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 70% at 70% 50%, rgba(196,154,79,.07) 0%, transparent 70%),
+        linear-gradient(135deg, #0a0a0a 0%, #111 60%, #0d0d0d 100%);
+    }
+    .hero-lines {
+      position: absolute; inset: 0; opacity: .04;
+      background-image: repeating-linear-gradient(
+        0deg, transparent, transparent 59px, #c49a4f 59px, #c49a4f 60px
+      );
+    }
+    .hero-content {
+      position: relative;
+      max-width: 700px;
+    }
+    .hero-eyebrow {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 28px;
+      opacity: 0; animation: fadeUp .8s .2s forwards;
+    }
+    .hero-eyebrow-line { width: 40px; height: 1px; background: var(--gold); }
+    .hero-eyebrow span {
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+    }
+    #hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(42px, 6vw, 74px);
+      line-height: 1.08;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 28px;
+      opacity: 0; animation: fadeUp .9s .35s forwards;
+    }
+    #hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    #hero p {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin-bottom: 44px;
+      opacity: 0; animation: fadeUp .9s .5s forwards;
+      line-height: 1.8;
+    }
+    .hero-actions {
+      display: flex; gap: 16px; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp .9s .65s forwards;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: #000;
+      padding: 16px 32px;
+      border-radius: 3px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 15px;
+      letter-spacing: 0.3px;
+      transition: background .25s, transform .2s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--gold-lt); transform: translateY(-1px); }
+    .btn-ghost {
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 16px 32px;
+      border-radius: 3px;
+      text-decoration: none;
+      font-size: 15px;
+      transition: border-color .25s, color .25s;
+    }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+    .hero-stats {
+      position: absolute;
+      right: 0; bottom: 80px;
+      display: flex; flex-direction: column; gap: 1px;
+      opacity: 0; animation: fadeIn 1s 1s forwards;
+    }
+    .hero-stat {
+      background: var(--surface);
+      border-left: 2px solid var(--gold);
+      padding: 18px 28px;
+      min-width: 180px;
+    }
+    .hero-stat strong {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 30px;
+      color: var(--white);
+      font-weight: 700;
+    }
+    .hero-stat span { font-size: 12px; color: var(--text-muted); letter-spacing: 1px; }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      margin: 0 auto;
+      max-width: 800px;
+    }
+
+    /* ── SECTION BASE ── */
+    section { padding: 100px 0; }
+
+    /* ── SOBRE ── */
+    #sobre { background: var(--bg-2); }
+    #sobre .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    #sobre h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 4vw, 48px);
+      line-height: 1.2;
+      margin-bottom: 24px;
+      color: var(--white);
+    }
+    #sobre p { color: var(--text-muted); margin-bottom: 16px; font-size: 16px; }
+    .sobre-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: 2px solid var(--gold);
+      padding: 32px;
+    }
+    .sobre-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .sobre-card p { color: var(--text-muted); margin: 0; font-size: 15px; }
+    .sobre-cards { display: flex; flex-direction: column; gap: 16px; }
+
+    /* ── SERVIÇOS ── */
+    #servicos { background: var(--bg); }
+    #servicos h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 4vw, 48px);
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    #servicos .intro { color: var(--text-muted); max-width: 500px; margin-bottom: 60px; }
+    .servicos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .servico-item {
+      background: var(--surface);
+      padding: 40px 32px;
+      position: relative;
+      overflow: hidden;
+      transition: background .3s;
+    }
+    .servico-item::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .4s;
+    }
+    .servico-item:hover { background: #222; }
+    .servico-item:hover::before { transform: scaleX(1); }
+    .servico-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      color: var(--border);
+      font-weight: 700;
+      margin-bottom: 20px;
+      line-height: 1;
+      transition: color .3s;
+    }
+    .servico-item:hover .servico-num { color: var(--gold); opacity: .3; }
+    .servico-item h3 {
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 12px;
+      font-family: 'Playfair Display', serif;
+    }
+    .servico-item p { color: var(--text-muted); font-size: 15px; }
+
+    /* ── CAPACIDADE ── */
+    #capacidade {
+      background: var(--bg-3);
+      position: relative;
+      overflow: hidden;
+    }
+    #capacidade::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: repeating-linear-gradient(
+        90deg, transparent, transparent 119px, rgba(196,154,79,.03) 119px, rgba(196,154,79,.03) 120px
+      );
+    }
+    #capacidade .inner { position: relative; }
+    #capacidade h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 4vw, 48px);
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    #capacidade .intro { color: var(--text-muted); max-width: 500px; margin-bottom: 60px; }
+    .cap-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      margin-bottom: 60px;
+    }
+    .cap-item {
+      background: var(--surface);
+      padding: 36px 28px;
+      text-align: center;
+    }
+    .cap-item strong {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      color: var(--gold);
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .cap-item span { font-size: 13px; color: var(--text-muted); letter-spacing: 0.5px; }
+    .cap-features {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .cap-feat {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 20px 24px;
+      background: var(--surface);
+      border-left: 2px solid var(--gold);
+    }
+    .cap-feat-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+    .cap-feat h4 { font-size: 15px; color: var(--white); margin-bottom: 4px; font-weight: 500; }
+    .cap-feat p { font-size: 13px; color: var(--text-muted); margin: 0; }
+
+    /* ── POR QUE NÓS ── */
+    #porque { background: var(--bg); }
+    #porque .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    #porque h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 4vw, 48px);
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+    #porque > .container > .grid > div:first-child p {
+      color: var(--text-muted); font-size: 16px; margin-bottom: 32px;
+    }
+    .razoes { display: flex; flex-direction: column; gap: 20px; }
+    .razao {
+      display: flex; gap: 20px; align-items: flex-start;
+    }
+    .razao-num {
+      flex-shrink: 0;
+      width: 36px; height: 36px;
+      border: 1px solid var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; color: var(--gold); font-weight: 500;
+      border-radius: 2px;
+      margin-top: 2px;
+    }
+    .razao h4 { font-size: 16px; color: var(--white); margin-bottom: 4px; font-weight: 500; }
+    .razao p { font-size: 14px; color: var(--text-muted); margin: 0; }
+
+    /* destaque lateral */
+    .destaque-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 48px 40px;
+      position: relative;
+    }
+    .destaque-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+    }
+    .destaque-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-style: italic;
+      color: var(--white);
+      line-height: 1.5;
+      margin-bottom: 28px;
+    }
+    .destaque-detail {
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .detail-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .detail-row:last-child { border-bottom: none; }
+    .detail-row span:first-child { font-size: 13px; color: var(--text-muted); }
+    .detail-row span:last-child { font-size: 14px; color: var(--white); font-weight: 500; }
+
+    /* ── CTA ── */
+    #cta {
+      background: var(--bg-2);
+      text-align: center;
+      padding: 120px 0;
+    }
+    #cta h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 5vw, 56px);
+      color: var(--white);
+      margin-bottom: 16px;
+      line-height: 1.15;
+    }
+    #cta p { color: var(--text-muted); font-size: 17px; margin-bottom: 44px; }
+    .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* ── CONTATO ── */
+    #contato { background: var(--bg); }
+    #contato h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 4vw, 48px);
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    #contato .intro { color: var(--text-muted); margin-bottom: 60px; }
+    #contato .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+    }
+    .form-group { margin-bottom: 18px; }
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 14px 16px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      border-radius: 2px;
+      outline: none;
+      transition: border-color .25s;
+      -webkit-appearance: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { border-color: var(--gold); }
+    .form-group select option { background: var(--surface); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-submit {
+      background: var(--gold);
+      color: #000;
+      border: none;
+      padding: 16px 36px;
+      font-size: 15px;
+      font-weight: 500;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: background .25s;
+    }
+    .form-submit:hover { background: var(--gold-lt); }
+
+    .contato-info { display: flex; flex-direction: column; gap: 28px; padding-top: 8px; }
+    .info-item h4 {
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+    .info-item p, .info-item a {
+      font-size: 16px;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .info-item a:hover { color: var(--gold); }
+    .info-divider { height: 1px; background: var(--border); }
+
+    /* WhatsApp float */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      background: #25d366;
+      color: #fff;
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none;
+      font-size: 26px;
+      box-shadow: 0 4px 20px rgba(37,211,102,.4);
+      z-index: 200;
+      transition: transform .25s;
+    }
+    .whatsapp-float:hover { transform: scale(1.1); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #080808;
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+    }
+    footer .inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    footer .logo { font-size: 18px; }
+    footer p { font-size: 13px; color: var(--text-muted); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      .container { padding: 0 20px; }
+      section { padding: 70px 0; }
+
+      nav ul { display: none; }
+      .hamburger { display: flex; }
+      nav ul.open {
+        display: flex; flex-direction: column;
+        position: absolute;
+        top: 100%; left: 0; right: 0;
+        background: rgba(10,10,10,.97);
+        padding: 20px 32px 28px;
+        border-top: 1px solid var(--border);
+        gap: 20px;
+      }
+      nav ul.open a { font-size: 16px; }
+      .nav-cta { display: none; }
+
+      .hero-stats { display: none; }
+      #hero h1 { font-size: 38px; }
+      #hero p { font-size: 16px; }
+
+      #sobre .grid,
+      #porque .grid,
+      #contato .grid { grid-template-columns: 1fr; gap: 40px; }
+
+      .servicos-grid { grid-template-columns: 1fr; }
+      .cap-grid { grid-template-columns: repeat(2, 1fr); }
+      .cap-features { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="container inner">
+    <a href="#hero" class="logo">Zanella<span>.</span></a>
+    <ul id="nav-menu">
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#capacidade">Capacidade</a></li>
+      <li><a href="#contato">Contato</a></li>
+      <li><a href="#contato" class="nav-cta">Solicitar Orçamento</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <div class="hero-eyebrow-line"></div>
+        <span>Confecção Industrial · Santa Catarina</span>
+      </div>
+      <h1>Mais de duas<br>décadas <em>produzindo</em><br>com precisão.</h1>
+      <p>Somos uma confecção industrial com raízes em 2002, entregando costura, revisão e embalagem para marcas que não abrem mão de qualidade e pontualidade.</p>
+      <div class="hero-actions">
+        <a href="#contato" class="btn-primary">Solicitar Orçamento</a>
+        <a href="#servicos" class="btn-ghost">Conheça nossos serviços</a>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <strong>2002</strong>
+        <span>ano de fundação</span>
+      </div>
+      <div class="hero-stat">
+        <strong>80+</strong>
+        <span>colaboradores</span>
+      </div>
+      <div class="hero-stat">
+        <strong>SC</strong>
+        <span>Santa Catarina</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="container">
+    <div class="grid">
+      <div class="reveal">
+        <span class="tag">Quem somos</span>
+        <h2>Estrutura sólida.<br>Compromisso real.</h2>
+        <p>A Zanella Têxtil nasceu em 2002 com um propósito simples: produzir bem, entregar no prazo e honrar cada parceria. Mais de vinte anos depois, esse compromisso ainda é o que nos move.</p>
+        <p>Nossa estrutura foi construída para atender marcas em crescimento — desde lotes menores até volumes industriais — sem abrir mão do controle de qualidade em cada peça.</p>
+        <p>Trabalhamos como uma extensão da sua operação, com responsabilidade técnica e agilidade para acompanhar o seu ritmo.</p>
+      </div>
+      <div class="sobre-cards reveal">
+        <div class="sobre-card">
+          <h4>Produção para marcas</h4>
+          <p>Atendemos marcas de vestuário, e-commerces e empresas de private label em todo o Brasil, com capacidade para escalar conforme a demanda cresce.</p>
+        </div>
+        <div class="sobre-card">
+          <h4>Equipe especializada</h4>
+          <p>Time com mais de 80 colaboradores treinados, processos internos definidos e gestão de qualidade aplicada em toda a produção.</p>
+        </div>
+        <div class="sobre-card">
+          <h4>Parceria de longo prazo</h4>
+          <p>Construímos relações duradouras. Nossos clientes não buscam apenas um fornecedor — buscam uma operação em quem confiar.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section id="servicos">
+  <div class="container">
+    <span class="tag reveal">O que oferecemos</span>
+    <h2 class="reveal">Serviços completos<br>do corte à expedição.</h2>
+    <p class="intro reveal">Uma solução produtiva integrada para que sua marca foque no que importa: crescer.</p>
+    <div class="servicos-grid reveal">
+      <div class="servico-item">
+        <div class="servico-num">01</div>
+        <h3>Costura Industrial</h3>
+        <p>Produção em escala com controle de qualidade em cada etapa. Atendemos diferentes segmentos — fitness, moda feminina, infantil, uniformes e mais.</p>
+      </div>
+      <div class="servico-item">
+        <div class="servico-num">02</div>
+        <h3>Revisão de Qualidade</h3>
+        <p>Conferência rigorosa antes de qualquer expedição. Sua marca não pode se dar ao luxo de receber devoluções — e nós sabemos disso.</p>
+      </div>
+      <div class="servico-item">
+        <div class="servico-num">03</div>
+        <h3>Embalagem e Expedição</h3>
+        <p>Preparação das peças conforme as especificações da sua marca — etiquetas, polybag, embalagem individual ou coletiva, pronto para envio.</p>
+      </div>
+      <div class="servico-item">
+        <div class="servico-num">04</div>
+        <h3>Facção Terceirizada</h3>
+        <p>Você cuida do design e das vendas. Nós cuidamos da produção. Simples assim — com processo, prazo e comunicação clara.</p>
+      </div>
+      <div class="servico-item">
+        <div class="servico-num">05</div>
+        <h3>Private Label</h3>
+        <p>Ideal para marcas que querem produzir com identidade própria sem investir em estrutura fabril. Produzimos conforme suas especificações.</p>
+      </div>
+      <div class="servico-item">
+        <div class="servico-num">06</div>
+        <h3>Grandes Volumes</h3>
+        <p>Estrutura preparada para atender demandas industriais. Capacidade produtiva real para acompanhar marcas em crescimento acelerado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPACIDADE -->
+<section id="capacidade">
+  <div class="container inner">
+    <span class="tag reveal">Nossa estrutura</span>
+    <h2 class="reveal">Capacidade produtiva<br>para o seu crescimento.</h2>
+    <p class="intro reveal">Máquinas, equipe e processos prontos para escalar junto com a sua demanda.</p>
+
+    <div class="cap-grid reveal">
+      <div class="cap-item">
+        <strong>2002</strong>
+        <span>Fundação da empresa</span>
+      </div>
+      <div class="cap-item">
+        <strong>80+</strong>
+        <span>Colaboradores ativos</span>
+      </div>
+      <div class="cap-item">
+        <strong>20+</strong>
+        <span>Anos no mercado</span>
+      </div>
+      <div class="cap-item">
+        <strong>SC</strong>
+        <span>Polo têxtil nacional</span>
+      </div>
+    </div>
+
+    <div class="cap-features reveal">
+      <div class="cap-feat">
+        <div class="cap-feat-icon">⚙️</div>
+        <div>
+          <h4>Maquinário industrial</h4>
+          <p>Parque de máquinas mantido e atualizado para garantir eficiência e qualidade constantes.</p>
+        </div>
+      </div>
+      <div class="cap-feat">
+        <div class="cap-feat-icon">📋</div>
+        <div>
+          <h4>Controle de processo</h4>
+          <p>Fluxo de produção documentado, com pontos de controle em cada fase — do corte à embalagem.</p>
+        </div>
+      </div>
+      <div class="cap-feat">
+        <div class="cap-feat-icon">🚚</div>
+        <div>
+          <h4>Atendimento nacional</h4>
+          <p>Produzimos em Santa Catarina e enviamos para marcas em todo o Brasil, com logística organizada.</p>
+        </div>
+      </div>
+      <div class="cap-feat">
+        <div class="cap-feat-icon">🤝</div>
+        <div>
+          <h4>Comunicação direta</h4>
+          <p>Acompanhamento do pedido, prazos claros e canal aberto — sem intermediários, sem surpresas.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POR QUE NÓS -->
+<section id="porque">
+  <div class="container">
+    <div class="grid">
+      <div class="reveal">
+        <span class="tag">Por que a Zanella</span>
+        <h2>Experiência que se<br>traduz em resultado.</h2>
+        <p>Não somos uma facção genérica. Somos um parceiro de produção com história, estrutura e responsabilidade para entregar o que prometemos.</p>
+        <div class="razoes">
+          <div class="razao">
+            <div class="razao-num">01</div>
+            <div>
+              <h4>Mais de 20 anos de mercado</h4>
+              <p>Sobrevivemos crises, pandemias e transformações do setor. Essa resiliência reflete na qualidade da nossa operação.</p>
+            </div>
+          </div>
+          <div class="razao">
+            <div class="razao-num">02</div>
+            <div>
+              <h4>Equipe treinada e estável</h4>
+              <p>Time consolidado significa consistência de qualidade — não há surpresas quando um novo colaborador entra na linha.</p>
+            </div>
+          </div>
+          <div class="razao">
+            <div class="razao-num">03</div>
+            <div>
+              <h4>Capacidade para crescer com você</h4>
+              <p>Nossa estrutura suporta desde pedidos regulares até picos de demanda sazonais sem comprometer o prazo.</p>
+            </div>
+          </div>
+          <div class="razao">
+            <div class="razao-num">04</div>
+            <div>
+              <h4>Localização estratégica em SC</h4>
+              <p>Santa Catarina é o maior polo têxtil do Brasil — estar aqui é fazer parte de um ecossistema de alta performance.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="destaque-box reveal">
+        <p class="destaque-quote">"Uma marca que cresce precisa de um parceiro que cresça junto. Não de um fornecedor que apenas cumpra pedidos."</p>
+        <div class="destaque-detail">
+          <div class="detail-row">
+            <span>Segmento</span>
+            <span>Costura Industrial</span>
+          </div>
+          <div class="detail-row">
+            <span>Localização</span>
+            <span>Santa Catarina, Brasil</span>
+          </div>
+          <div class="detail-row">
+            <span>Atendimento</span>
+            <span>Todo o Brasil</span>
+          </div>
+          <div class="detail-row">
+            <span>Fundação</span>
+            <span>2002</span>
+          </div>
+          <div class="detail-row">
+            <span>Equipe</span>
+            <span>80+ colaboradores</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="container">
+    <span class="tag reveal">Vamos conversar</span>
+    <h2 class="reveal">Sua produção em boas mãos.<br><em style="font-style:italic;color:var(--gold)">Desde o primeiro pedido.</em></h2>
+    <p class="reveal">Conte-nos o que você precisa. Vamos analisar sua demanda e apresentar uma proposta objetiva.</p>
+    <div class="cta-actions reveal">
+      <a href="#contato" class="btn-primary">Solicitar Orçamento</a>
+      <a href="https://wa.me/5547999999999" target="_blank" class="btn-ghost">WhatsApp Direto</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato">
+  <div class="container">
+    <span class="tag reveal">Contato</span>
+    <h2 class="reveal">Solicite um orçamento.</h2>
+    <p class="intro reveal">Preencha o formulário ou entre em contato diretamente. Respondemos em até 24 horas.</p>
+    <div class="grid reveal">
+      <div>
+        <div class="form-group">
+          <label>Nome</label>
+          <input type="text" placeholder="Seu nome">
+        </div>
+        <div class="form-group">
+          <label>Empresa</label>
+          <input type="text" placeholder="Nome da sua marca ou empresa">
+        </div>
+        <div class="form-group">
+          <label>Telefone / WhatsApp</label>
+          <input type="tel" placeholder="(00) 00000-0000">
+        </div>
+        <div class="form-group">
+          <label>E-mail</label>
+          <input type="email" placeholder="seu@email.com">
+        </div>
+        <div class="form-group">
+          <label>Segmento</label>
+          <select>
+            <option value="" disabled selected>Selecione o segmento</option>
+            <option>Moda feminina</option>
+            <option>Moda fitness</option>
+            <option>Moda infantil</option>
+            <option>Uniformes corporativos</option>
+            <option>Private label</option>
+            <option>Outro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Descreva sua necessidade</label>
+          <textarea placeholder="Tipo de peça, volume estimado, prazos, qualquer detalhe relevante..."></textarea>
+        </div>
+        <button class="form-submit">Enviar Solicitação</button>
+      </div>
+
+      <div class="contato-info">
+        <div class="info-item">
+          <h4>WhatsApp</h4>
+          <a href="https://wa.me/5547999999999" target="_blank">(47) 99999-9999</a>
+        </div>
+        <div class="info-divider"></div>
+        <div class="info-item">
+          <h4>E-mail</h4>
+          <a href="mailto:contato@zanellatextil.com.br">contato@zanellatextil.com.br</a>
+        </div>
+        <div class="info-divider"></div>
+        <div class="info-item">
+          <h4>Localização</h4>
+          <p>Santa Catarina, Brasil</p>
+        </div>
+        <div class="info-divider"></div>
+        <div class="info-item">
+          <h4>Atendimento</h4>
+          <p>Segunda a sexta, das 8h às 18h</p>
+        </div>
+        <div class="info-divider"></div>
+        <div class="info-item">
+          <h4>Instagram</h4>
+          <a href="https://instagram.com/zanellatextil" target="_blank">@zanellatextil</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container inner">
+    <a href="#hero" class="logo">Zanella<span>.</span></a>
+    <p>© 2026 Zanella Têxtil · Todos os direitos reservados · Santa Catarina, Brasil</p>
+  </div>
+</footer>
+
+<!-- WhatsApp float -->
+<a href="https://wa.me/5547999999999" target="_blank" class="whatsapp-float" title="Fale conosco no WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script>
+  // Navbar scroll
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const menu = document.getElementById('nav-menu');
+  hamburger.addEventListener('click', () => menu.classList.toggle('open'));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
